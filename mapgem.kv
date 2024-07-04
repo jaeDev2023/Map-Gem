@@ -1,0 +1,84 @@
+<GridLayout>
+    canvas.before:
+        Color:
+            rgba: 0.78, 0.918, 0.894, 1
+
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<BoxLayout>
+    canvas.before:
+        Color:
+            rgba: 0.78, 0.918, 0.894, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<Label>
+    canvas.before:
+        Color:
+            rgba: 0.655, 0.91, 0.741, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    color: 0, 0, 0, 1
+
+<Button>
+    background_normal: ''
+    background_color: 0.988, 0.737, 0.722, 1
+    color: 0, 0, 0, 1
+
+
+<EntryScreen>
+    orientation: 'vertical'
+
+    Label:
+        pos_hint: {'x': 0}
+        size_hint_y: 0.1
+        text: 'Welcome to Map Generator!'
+        color: 1, 1, 1, 1
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_x: 0.5
+        pos_hint: {'x': 0}
+
+        Button:
+            text: 'Create Map!'
+            on_press: root.to_editmap()
+
+<MyLabel>:
+    color: 0, 0, 0, 1
+    canvas.before:
+        Color:
+            rgba: self.bg_color
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<EditMap>
+    cols: 1
+
+    BoxLayout:
+        size_hint_y: 0.2
+        Button:
+            text: 'Map-Gen!'
+            on_release: root.generate_map_tiles()
+
+    BoxLayout:
+        GridLayout:
+            id: grid
+            cols: root.map_object.width
+
+        BoxLayout:
+            size_hint_x: 0.2
+            orientation: 'vertical'
+            Label:
+                text: ''
